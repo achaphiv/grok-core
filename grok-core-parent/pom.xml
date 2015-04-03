@@ -17,7 +17,6 @@
 
     <version.feign>8.1.0</version.feign>
     <version.jackson>2.5.1</version.jackson>
-    <version.mongodb>2.6.7</version.mongodb>
   </properties>
 
   <dependencyManagement>
@@ -47,21 +46,9 @@
       </dependency>
 
       <dependency>
-        <groupId>com.fasterxml.jackson.dataformat</groupId>
-        <artifactId>jackson-dataformat-csv</artifactId>
-        <version>${version.jackson}</version>
-      </dependency>
-
-      <dependency>
         <groupId>com.google.code.findbugs</groupId>
         <artifactId>jsr305</artifactId>
         <version>3.0.0</version>
-      </dependency>
-
-      <dependency>
-        <groupId>de.flapdoodle.embed</groupId>
-        <artifactId>de.flapdoodle.embed.mongo</artifactId>
-        <version>1.47.0</version>
       </dependency>
 
       <dependency>
