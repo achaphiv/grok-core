@@ -1,0 +1,8 @@
+language: java
+install: true
+script:
+  - ./mvnw -s settings.xml -Pprepare-release
+  - ./mvnw -s settings.xml -Prelease
+branches:
+  only:
+    - master
