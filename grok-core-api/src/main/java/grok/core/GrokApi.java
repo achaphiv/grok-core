@@ -2,8 +2,10 @@ package grok.core;
 
 import java.util.List;
 
+import feign.Body;
 import feign.Param;
 import feign.RequestLine;
+import grok.core.request.SearchRequest;
 
 public interface GrokApi {
   String CRAGS_ENDPOINT = "/crag";
@@ -20,7 +22,7 @@ public interface GrokApi {
   void insertCrag(Crag c);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes")
-  Route getRoutesForCrag(@Param("id") String id);
+  List<Route> getRoutesForCrag(@Param("id") String id);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}")
   Route route(@Param("id") String id);
@@ -33,4 +35,7 @@ public interface GrokApi {
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/search?query={query}")
   List<Route> searchRoutes(@Param("query") String query);
+
+  @RequestLine("POST " + ROUTES_ENDPOINT + "/search?query={query}&start={start}&size={size}")
+  List<Route> searchRoutes(@Param("search") SearchRequest request, @Param("start") int start, @Param("size") int size);
 }
