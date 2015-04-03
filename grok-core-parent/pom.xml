@@ -20,16 +20,6 @@
     <version.mongodb>2.6.7</version.mongodb>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>auto-value-babsher-mvn-repo</id>
-      <url>https://rawgit.com/babsher/auto/master/value/target/mvn-repo/</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
