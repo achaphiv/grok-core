@@ -17,6 +17,9 @@ public abstract class SearchRequest {
             .build();
   }
 
+  @JsonProperty
   public abstract String search();
+
+  @JsonProperty
   public abstract LngLatAlt location();
 }
