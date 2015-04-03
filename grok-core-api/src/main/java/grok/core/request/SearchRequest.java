@@ -3,12 +3,13 @@ package grok.core.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.auto.value.AutoValue;
 import org.geojson.GeoJsonObject;
+import org.geojson.LngLatAlt;
 
 @AutoValue
 public abstract class SearchRequest {
 
   public static SearchRequest of(@JsonProperty("search") String search,
-                                 @JsonProperty("location") GeoJsonObject location) {
+                                 @JsonProperty("location") LngLatAlt location) {
     return new AutoValue_SearchRequest.Builder_AutoValue_SearchRequest()
             .search(search)
             .location(location)
@@ -16,5 +17,5 @@ public abstract class SearchRequest {
   }
 
   public abstract String search();
-  public abstract GeoJsonObject location();
+  public abstract LngLatAlt location();
 }
