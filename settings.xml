@@ -26,4 +26,11 @@
   <activeProfiles>
     <activeProfile>grok</activeProfile>
   </activeProfiles>
+  <servers>
+    <server>
+      <id>bintray</id>
+      <username>${env.BINTRAY_USERNAME}</username>
+      <password>${env.BINTRAY_PASSWORD}</password>
+    </server>
+  </servers>
 </settings>
