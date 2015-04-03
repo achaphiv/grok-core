@@ -1,8 +1,7 @@
 package grok.core;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-
-import java.util.Optional;
+import com.google.common.base.Optional;
 
 public enum RopeGrade implements Grade {
   _5_INTRO("5.Intro", 0),
@@ -115,7 +114,7 @@ public enum RopeGrade implements Grade {
         return Optional.of(val);
       }
     }
-    return Optional.empty();
+    return Optional.absent();
   }
 
   @Override

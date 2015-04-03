@@ -1,6 +1,6 @@
 package grok.core;
 
-import java.util.Optional;
+import com.google.common.base.Optional;
 
 public enum BoulderingGrade implements Grade {
   VIntro("VIntro", 0),
@@ -64,7 +64,7 @@ public enum BoulderingGrade implements Grade {
         return Optional.of(val);
       }
     }
-    return Optional.empty();
+    return Optional.absent();
   }
 
   @Override
