@@ -8,3 +8,5 @@ script:
 branches:
   only:
     - master
+notifications:
+  slack: grokclimbing:HkisDPAARo7pzk2Ao5O66pg1
