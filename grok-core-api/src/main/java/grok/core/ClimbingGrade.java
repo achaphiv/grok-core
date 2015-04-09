@@ -4,8 +4,7 @@ import com.google.common.collect.Table;
 import com.google.common.collect.TreeBasedTable;
 
 /**
- * @see <a
- *      href="http://www.mec.ca/AST/ContentPrimary/Learn/Climbing/IntroToClimbing/ClimbingGradeConversion.jsp"></a>
+ * @see <a href="http://www.mec.ca/AST/ContentPrimary/Learn/Climbing/IntroToClimbing/ClimbingGradeConversion.jsp"></a>
  */
 public final class ClimbingGrade {
   enum Country {
@@ -13,8 +12,7 @@ public final class ClimbingGrade {
   }
 
   private static final class DataTable {
-    private final Table<Integer, Country, String> known =
-        TreeBasedTable.create();
+    private final Table<Integer, Country, String> known = TreeBasedTable.create();
 
     private int rowNumber;
 
@@ -56,8 +54,7 @@ public final class ClimbingGrade {
       //@formatter:on
     }
 
-    private void put(String usa, String france, String australia,
-                     String southAfrica, String germany, String uk) {
+    private void put(String usa, String france, String australia, String southAfrica, String germany, String uk) {
       known.put(rowNumber, Country.USA, usa);
       known.put(rowNumber, Country.FRANCE, france);
       known.put(rowNumber, Country.AUSTRALIA, australia);
