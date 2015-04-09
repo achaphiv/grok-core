@@ -53,6 +53,10 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
     return of(value, System.YDS);
   }
 
+  public static ClimbingGrade french(String value) {
+    return of(value, System.FRENCH);
+  }
+
   public static ClimbingGrade of(String value, System system) {
     for (ClimbingGrade maybe : KNOWN) {
       if (maybe.matches(system, value)) {
