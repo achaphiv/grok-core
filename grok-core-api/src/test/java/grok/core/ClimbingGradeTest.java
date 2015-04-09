@@ -10,25 +10,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ClimbingGradeTest {
   @Test
   public void somethingExists() {
-    ClimbingGrade.of(System.YDS, "5.1");
+    ClimbingGrade.of("5.1", System.YDS);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void somethingDoesntExist() {
-    ClimbingGrade.of(System.YDS, "shouldNotExist");
+    ClimbingGrade.of("shouldNotExist", System.YDS);
   }
 
   @Test
   public void isLogicallyOrdered() {
-    ClimbingGrade seven = ClimbingGrade.of(System.EWBANK, "7");
-    ClimbingGrade eight = ClimbingGrade.of(System.EWBANK, "8");
+    ClimbingGrade seven = ClimbingGrade.of("7", System.EWBANK);
+    ClimbingGrade eight = ClimbingGrade.of("8", System.EWBANK);
     assertThat(seven).isLessThan(eight);
   }
 
   @Test
   public void canSerializeToJson() throws Exception {
     String value = "E4 6a";
-    ClimbingGrade someGrade = ClimbingGrade.of(System.BRITISH, value);
+    ClimbingGrade someGrade = ClimbingGrade.of(value, System.BRITISH);
     String actual = new ObjectMapper().writeValueAsString(someGrade);
     assertThat(actual).contains('\"' + value + '\"');
   }

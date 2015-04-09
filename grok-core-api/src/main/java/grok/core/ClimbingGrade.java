@@ -50,10 +50,10 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
   }
 
   public static ClimbingGrade yds(String value) {
-    return of(System.YDS, value);
+    return of(value, System.YDS);
   }
 
-  public static ClimbingGrade of(System system, String value) {
+  public static ClimbingGrade of(String value, System system) {
     for (ClimbingGrade maybe : KNOWN) {
       if (maybe.matches(system, value)) {
         return maybe;
