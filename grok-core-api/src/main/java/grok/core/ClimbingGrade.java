@@ -26,7 +26,8 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
      */
     YDS,
     /**
-     * Used in the vast majority of European countries and in many international events outside the USA.
+     * Used in the vast majority of European countries and in many international
+     * events outside the USA.
      */
     FRENCH,
     /**
@@ -38,7 +39,8 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
      */
     EWBANK_SOUTH_AFRICA,
     /**
-     * Used in Germany, Austria, Switzerland, Czech Republic, Slovakia, and Hungary.
+     * Used in Germany, Austria, Switzerland, Czech Republic, Slovakia, and
+     * Hungary.
      */
     UIAA,
     /**
