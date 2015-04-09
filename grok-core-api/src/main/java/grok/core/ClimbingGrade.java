@@ -66,7 +66,7 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
       known("5.15a", "9a+   ", "36   ", "38   ", "XI+/XII-  ", "E11 7c   "),
       known("5.15b", "9b    ", "37   ", "39   ", "XII-/XII  ", "E11 8a   "),
       known("5.15c", "9b+   ", "38   ", "40   ", "XII       ", "E11 8b   "),
-      known("5.15d", "9c    ", "39   ", "41   ", "XII+      ", "E11+8c   "));
+      known("5.15d", "9c    ", "39   ", "41   ", "XII+      ", "E11 8c   "));
   //@formatter:on
 
   private static ClimbingGrade known(String usa, String france, String australia,
