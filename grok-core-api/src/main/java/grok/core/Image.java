@@ -7,7 +7,6 @@ import org.mongojack.ObjectId;
 
 @AutoValue
 public abstract class Image {
-
   @JsonCreator
   public static Image of(@JsonProperty("id") String id,
                          @JsonProperty("title") String title,
