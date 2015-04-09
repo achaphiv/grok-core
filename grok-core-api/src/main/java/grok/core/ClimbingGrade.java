@@ -11,7 +11,7 @@ import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.SetMultimap;
 
 /**
- * @see <a href="http://www.mec.ca/AST/ContentPrimary/Learn/Climbing/IntroToClimbing/ClimbingGradeConversion.jsp"></a>
+ * @see <a href="http://www.rockclimbing.com/Articles/Introduction_to_Climbing/Difficulty_Grades_and_Conversions_529.html"></a>
  */
 @AutoValue
 public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
