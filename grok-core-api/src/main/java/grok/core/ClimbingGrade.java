@@ -13,16 +13,44 @@ import com.google.common.collect.Multimaps;
 import com.google.common.collect.SetMultimap;
 
 /**
+ * @see <a href="http://en.wikipedia.org/wiki/Grade_%28climbing%29"></a>
  * @see <a href="http://www.rockclimbing.com/Articles/Introduction_to_Climbing/Difficulty_Grades_and_Conversions_529.html"></a>
  */
 @AutoValue
 public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
   public enum System {
-    USA, FRANCE, AUSTRALIA, SOUTH_AFRICA, GERMANY, UNITED_KINGDOM;
+    /**
+     * <a href="http://en.wikipedia.org/wiki/Yosemite_Decimal_System">Yosemite Decimal System</a>
+     * <p>
+     * Used in USA and Canada.
+     */
+    YDS,
+    /**
+     * Used in the vast majority of European countries and in many international events outside the USA.
+     */
+    FRENCH,
+    /**
+     * Used in Australia and New Zealand.
+     */
+    EWBANK,
+    /**
+     * Used in South Africa.
+     */
+    EWBANK_SOUTH_AFRICA,
+    /**
+     * Used in Germany, Austria, Switzerland, Czech Republic, Slovakia, and Hungary.
+     */
+    UIAA,
+    /**
+     * A.K.A. UK grading system.
+     * <p>
+     * Used in Great Britain and Ireland.
+     */
+    BRITISH;
   }
 
-  public static ClimbingGrade usa(String value) {
-    return of(System.USA, value);
+  public static ClimbingGrade yds(String value) {
+    return of(System.YDS, value);
   }
 
   public static ClimbingGrade of(System system, String value) {
@@ -85,12 +113,12 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
   private static ClimbingGrade known(String usa, String france, String australia,
                                      String southAfrica, String germany, String uk) {
     return new AutoValue_ClimbingGrade(ImmutableSetMultimap.<System, String> builder()
-                                                           .putAll(System.USA, split(usa))
-                                                           .putAll(System.FRANCE, split(france))
-                                                           .putAll(System.AUSTRALIA, split(australia))
-                                                           .putAll(System.SOUTH_AFRICA, split(southAfrica))
-                                                           .putAll(System.GERMANY, split(germany))
-                                                           .putAll(System.UNITED_KINGDOM, split(uk))
+                                                           .putAll(System.YDS, split(usa))
+                                                           .putAll(System.FRENCH, split(france))
+                                                           .putAll(System.EWBANK, split(australia))
+                                                           .putAll(System.EWBANK_SOUTH_AFRICA, split(southAfrica))
+                                                           .putAll(System.UIAA, split(germany))
+                                                           .putAll(System.BRITISH, split(uk))
                                                            .build());
   }
 
