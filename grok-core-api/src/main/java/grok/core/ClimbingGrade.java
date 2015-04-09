@@ -16,6 +16,10 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
     USA, FRANCE, AUSTRALIA, SOUTH_AFRICA, GERMANY, UNITED_KINGDOM;
   }
 
+  public static ClimbingGrade usa(String value) {
+    return of(Country.USA, value);
+  }
+
   public static ClimbingGrade of(Country country, String value) {
     for (ClimbingGrade maybe : KNOWN) {
       if (maybe.matches(country, value)) {
