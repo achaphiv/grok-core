@@ -20,7 +20,7 @@ public class TestSerialization {
                                           .image("image url")
                                           .thumbsDown(Count.of(0))
                                           .thumbsUp(Count.of(100))
-                                          .grade(Grade.from("5.5"))
+                                          .grade(ClimbingGrade.yds("5.5"))
                                           .build();
   private static final Crag crag = Crag.create()
                                        .id(1l)

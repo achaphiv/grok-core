@@ -17,7 +17,7 @@ public abstract class Route {
   public static Route of(@Id @JsonProperty("id") Long id,
                          @JsonProperty("cragId") Long cragId,
                          @JsonProperty("name") String name,
-                         @JsonProperty("grade") Grade grade,
+                         @JsonProperty("grade") ClimbingGrade grade,
                          @JsonProperty("grokRating") Rating rating,
                          @JsonProperty("thumbsDown") Count thumbsDown,
                          @JsonProperty("thumbsUp") Count thumbsUp) {
@@ -28,7 +28,7 @@ public abstract class Route {
                    .thumbsDown(thumbsDown)
                    .thumbsUp(thumbsUp)
                    .grokRating(rating)
-                   .searchIndex(name + " " + grade.getValue())
+                   .searchIndex(name + " " + grade)
                    .build();
   }
 
@@ -47,7 +47,7 @@ public abstract class Route {
   public abstract String getName();
 
   @JsonProperty
-  public abstract Grade getGrade();
+  public abstract ClimbingGrade getGrade();
 
   @JsonProperty
   public abstract Rating getGrokRating();

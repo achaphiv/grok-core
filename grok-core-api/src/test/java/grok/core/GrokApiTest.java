@@ -54,7 +54,7 @@ public class GrokApiTest {
                           .cragId(1l).grokRating(Rating.of(0))
                           .image("image url")
                           .name("Super Climb")
-                          .grade(Grade.from("5.5")).thumbsDown(Count.of(0)).thumbsUp(Count.of(1))
+                          .grade(ClimbingGrade.yds("5.5")).thumbsDown(Count.of(0)).thumbsUp(Count.of(1))
                           .searchIndex("Super Climb 5.5")
                           .build();
 
