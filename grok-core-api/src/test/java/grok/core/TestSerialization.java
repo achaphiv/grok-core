@@ -13,15 +13,6 @@ import com.google.common.io.Resources;
 
 public class TestSerialization {
   private static final ObjectMapper MAPPER = new ObjectMapper();
-  private static final Route climb = Route.create()
-                                          .id(1l)
-                                          .cragId(1l)
-                                          .name("name").grokRating(Rating.of(1500))
-                                          .image("image url")
-                                          .thumbsDown(Count.of(0))
-                                          .thumbsUp(Count.of(100))
-                                          .grade(ClimbingGrade.yds("5.5"))
-                                          .build();
   private static final Crag crag = Crag.create()
                                        .id(1l)
                                        .name("name")
@@ -31,16 +22,6 @@ public class TestSerialization {
                                        .location(new Point(1.0, 1.0)).build();
 
   @Test
-  public void serializesClimbToJSON() throws Exception {
-    assertThat(MAPPER.writeValueAsString(climb)).isEqualTo(climbJson());
-  }
-
-  @Test
-  public void deserializesClimbFromJSON() throws Exception {
-    assertThat(MAPPER.readValue(climbJson(), Route.class)).isEqualTo(climb);
-  }
-
-  @Test
   public void serializesCragToJSON() throws Exception {
     assertThat(MAPPER.writeValueAsString(crag)).isEqualTo(cragJson());
   }
@@ -48,10 +29,6 @@ public class TestSerialization {
   @Test
   public void deserializesCragFromJSON() throws Exception {
     assertThat(MAPPER.readValue(cragJson(), Crag.class)).isEqualTo(crag);
-  }
-
-  private String climbJson() {
-    return fixture("climb.json");
   }
 
   private String cragJson() {
