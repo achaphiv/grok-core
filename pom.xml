@@ -171,7 +171,7 @@
     <profile>
       <id>prepare-release</id>
       <properties>
-        <release.version.postfix>.${git.commitsCount}</release.version.postfix>
+        <release.version.postfix>.${git.commitsCount}-${git.shortRevision}</release.version.postfix>
         <release.version>${real.project.version}${release.version.postfix}</release.version>
       </properties>
       <build>
