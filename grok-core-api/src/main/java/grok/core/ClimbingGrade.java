@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.ImmutableSetMultimap;
@@ -31,6 +32,17 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
       }
     }
     throw new IllegalArgumentException(value + " does not exist for " + country);
+  }
+
+  // TODO(achaphiv): expose?
+  @JsonCreator
+  static ClimbingGrade of(Map<Country, Set<String>> values) {
+    for (ClimbingGrade maybe : KNOWN) {
+      if (maybe.valuesMap().equals(values)) {
+        return maybe;
+      }
+    }
+    throw new IllegalArgumentException(values + " is not a valid combination");
   }
 
   //@formatter:off
@@ -90,6 +102,7 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
 
   abstract SetMultimap<Country, String> values();
 
+  // TODO(achaphiv): expose?
   @JsonValue
   Map<Country, Set<String>> valuesMap() {
     return Multimaps.asMap(values());
