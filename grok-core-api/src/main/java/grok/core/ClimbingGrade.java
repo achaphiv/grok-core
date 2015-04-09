@@ -1,13 +1,14 @@
 package grok.core;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.ImmutableSetMultimap;
+import com.google.common.collect.Multimaps;
 import com.google.common.collect.SetMultimap;
 
 /**
@@ -90,8 +91,8 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
   abstract SetMultimap<Country, String> values();
 
   @JsonValue
-  Map<Country, Collection<String>> valuesMap() {
-    return values().asMap();
+  Map<Country, Set<String>> valuesMap() {
+    return Multimaps.asMap(values());
   }
 
   private boolean matches(Country country, String value) {
