@@ -2,7 +2,6 @@ package grok.core;
 
 import java.util.List;
 
-import feign.Body;
 import feign.Param;
 import feign.RequestLine;
 import grok.core.request.SearchRequest;
