@@ -17,26 +17,26 @@ import com.google.common.collect.SetMultimap;
  */
 @AutoValue
 public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
-  public enum Country {
+  public enum System {
     USA, FRANCE, AUSTRALIA, SOUTH_AFRICA, GERMANY, UNITED_KINGDOM;
   }
 
   public static ClimbingGrade usa(String value) {
-    return of(Country.USA, value);
+    return of(System.USA, value);
   }
 
-  public static ClimbingGrade of(Country country, String value) {
+  public static ClimbingGrade of(System system, String value) {
     for (ClimbingGrade maybe : KNOWN) {
-      if (maybe.matches(country, value)) {
+      if (maybe.matches(system, value)) {
         return maybe;
       }
     }
-    throw new IllegalArgumentException(value + " does not exist for " + country);
+    throw new IllegalArgumentException(value + " does not exist for " + system);
   }
 
   // TODO(achaphiv): expose?
   @JsonCreator
-  static ClimbingGrade of(Map<Country, Set<String>> values) {
+  static ClimbingGrade of(Map<System, Set<String>> values) {
     for (ClimbingGrade maybe : KNOWN) {
       if (maybe.valuesMap().equals(values)) {
         return maybe;
@@ -84,13 +84,13 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
 
   private static ClimbingGrade known(String usa, String france, String australia,
                                      String southAfrica, String germany, String uk) {
-    return new AutoValue_ClimbingGrade(ImmutableSetMultimap.<Country, String> builder()
-                                                           .putAll(Country.USA, split(usa))
-                                                           .putAll(Country.FRANCE, split(france))
-                                                           .putAll(Country.AUSTRALIA, split(australia))
-                                                           .putAll(Country.SOUTH_AFRICA, split(southAfrica))
-                                                           .putAll(Country.GERMANY, split(germany))
-                                                           .putAll(Country.UNITED_KINGDOM, split(uk))
+    return new AutoValue_ClimbingGrade(ImmutableSetMultimap.<System, String> builder()
+                                                           .putAll(System.USA, split(usa))
+                                                           .putAll(System.FRANCE, split(france))
+                                                           .putAll(System.AUSTRALIA, split(australia))
+                                                           .putAll(System.SOUTH_AFRICA, split(southAfrica))
+                                                           .putAll(System.GERMANY, split(germany))
+                                                           .putAll(System.UNITED_KINGDOM, split(uk))
                                                            .build());
   }
 
@@ -100,15 +100,15 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
 
   ClimbingGrade() {}
 
-  abstract SetMultimap<Country, String> values();
+  abstract SetMultimap<System, String> values();
 
   // TODO(achaphiv): expose?
   @JsonValue
-  Map<Country, Set<String>> valuesMap() {
+  Map<System, Set<String>> valuesMap() {
     return Multimaps.asMap(values());
   }
 
-  private boolean matches(Country country, String value) {
+  private boolean matches(System country, String value) {
     return values().get(country).contains(value);
   }
 
