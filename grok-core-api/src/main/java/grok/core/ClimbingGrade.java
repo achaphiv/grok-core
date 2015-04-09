@@ -114,15 +114,16 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
       known("5.15d", "9c    ", "39   ", "41   ", "XII+      ", "E11 8c   "));
   //@formatter:on
 
-  private static ClimbingGrade known(String usa, String france, String australia,
-                                     String southAfrica, String germany, String uk) {
+  private static ClimbingGrade known(String usa, String france,
+                                     String ewbank, String ewbankSouthAfrica,
+                                     String uiaa, String british) {
     return new AutoValue_ClimbingGrade(ImmutableSetMultimap.<System, String> builder()
                                                            .putAll(System.YDS, split(usa))
                                                            .putAll(System.FRENCH, split(france))
-                                                           .putAll(System.EWBANK, split(australia))
-                                                           .putAll(System.EWBANK_SOUTH_AFRICA, split(southAfrica))
-                                                           .putAll(System.UIAA, split(germany))
-                                                           .putAll(System.BRITISH, split(uk))
+                                                           .putAll(System.EWBANK, split(ewbank))
+                                                           .putAll(System.EWBANK_SOUTH_AFRICA, split(ewbankSouthAfrica))
+                                                           .putAll(System.UIAA, split(uiaa))
+                                                           .putAll(System.BRITISH, split(british))
                                                            .build());
   }
 
