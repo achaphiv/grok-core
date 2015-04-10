@@ -33,3 +33,5 @@ Using in another project
 ```
 
 [ ![Download](https://api.bintray.com/packages/grok/maven/grok-core/images/download.svg) ](https://bintray.com/grok/maven/grok-core/_latestVersion)
+
+[![Build Status](https://travis-ci.org/achaphiv/grok-core.svg?branch=master)](https://travis-ci.org/achaphiv/grok-core)
