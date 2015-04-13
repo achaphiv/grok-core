@@ -10,3 +10,5 @@ branches:
     - master
 notifications:
   slack: grokclimbing:HkisDPAARo7pzk2Ao5O66pg1
+git:
+  depth: 99999999
