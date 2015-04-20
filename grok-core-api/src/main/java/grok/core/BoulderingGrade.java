@@ -8,6 +8,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.auto.value.AutoValue;
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.SetMultimap;
@@ -89,6 +90,10 @@ public abstract class BoulderingGrade implements Comparable<BoulderingGrade> {
   BoulderingGrade() {}
 
   abstract SetMultimap<System, String> values();
+
+  public String valueIn(System system) {
+    return Joiner.on("/").join(values().get(system));
+  }
 
   // TODO(achaphiv): expose?
   @JsonValue
