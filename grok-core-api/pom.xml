@@ -21,6 +21,7 @@
       <artifactId>guava</artifactId>
     </dependency>
 
+    <!-- Only using annotations from these dependencies-->
     <dependency>
       <groupId>com.netflix.feign</groupId>
       <artifactId>feign-core</artifactId>
@@ -41,10 +42,10 @@
       <artifactId>javax.inject</artifactId>
       <optional>true</optional>
     </dependency>
-
     <dependency>
       <groupId>org.mongojack</groupId>
       <artifactId>mongojack</artifactId>
+      <optional>true</optional>
     </dependency>
 
     <dependency>
