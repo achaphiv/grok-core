@@ -4,7 +4,6 @@ import java.util.List;
 
 import feign.Param;
 import feign.RequestLine;
-import grok.core.request.SearchRequest;
 
 public interface GrokApi {
   String CRAGS_ENDPOINT = "/crag";
@@ -29,12 +28,31 @@ public interface GrokApi {
   @RequestLine("POST " + ROUTES_ENDPOINT)
   void insertRoute(Route r);
 
-  @RequestLine("GET " + ROUTES_ENDPOINT + "/search?query={query}&start={start}&size={size}")
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&start={start}&size={size}")
   List<Route> searchRoutes(@Param("query") String query, @Param("start") int start, @Param("size") int size);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/search?query={query}")
   List<Route> searchRoutes(@Param("query") String query);
 
-  @RequestLine("POST " + ROUTES_ENDPOINT + "/search?query={query}&start={start}&size={size}")
-  List<Route> searchRoutes(@Param("search") SearchRequest request, @Param("start") int start, @Param("size") int size);
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
+  List<Route> searchCrags(@Param("query") String query,
+                           @Param("lng") Double longitude,
+                           @Param("lat") Double latitude,
+                           @Param("start") int start,
+                           @Param("size") int size);
+
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}")
+  List<Route> searchCrags(@Param("query") String query,
+                           @Param("lng") Double longitude,
+                           @Param("lat") Double latitude);
+
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}")
+  List<Route> searchCrags(@Param("lng") Double longitude,
+                           @Param("lat") Double latitude);
+
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}&start={start}&size={size}")
+  List<Route> searchCrags(@Param("lng") Double longitude,
+                          @Param("lat") Double latitude,
+                          @Param("start") int start,
+                          @Param("size") int size);
 }
