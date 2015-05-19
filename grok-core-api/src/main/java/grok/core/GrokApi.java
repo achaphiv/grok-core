@@ -41,24 +41,24 @@ public interface GrokApi {
   List<Route> searchRoutes(@Param("query") String query, @Param("crag") String crag);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
-  List<Route> searchCrags(@Param("query") String query,
-                           @Param("lng") Double longitude,
-                           @Param("lat") Double latitude,
-                           @Param("start") int start,
-                           @Param("size") int size);
+  List<Crag> searchCrags(@Param("query") String query,
+                         @Param("lng") Double longitude,
+                         @Param("lat") Double latitude,
+                         @Param("start") int start,
+                         @Param("size") int size);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}")
-  List<Route> searchCrags(@Param("query") String query,
-                           @Param("lng") Double longitude,
-                           @Param("lat") Double latitude);
+  List<Crag> searchCrags(@Param("query") String query,
+                         @Param("lng") Double longitude,
+                         @Param("lat") Double latitude);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}")
-  List<Route> searchCrags(@Param("lng") Double longitude,
-                           @Param("lat") Double latitude);
+  List<Crag> searchCrags(@Param("lng") Double longitude,
+                         @Param("lat") Double latitude);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}&start={start}&size={size}")
-  List<Route> searchCrags(@Param("lng") Double longitude,
-                          @Param("lat") Double latitude,
-                          @Param("start") int start,
-                          @Param("size") int size);
+  List<Crag> searchCrags(@Param("lng") Double longitude,
+                         @Param("lat") Double latitude,
+                         @Param("start") int start,
+                         @Param("size") int size);
 }
