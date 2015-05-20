@@ -29,10 +29,8 @@ public abstract class Region {
 
     public abstract Builder id(long value);
 
-    @JsonProperty
     public abstract Builder name(String value);
 
-    @JsonProperty
     public abstract Builder image(String value);
 
     public abstract Region build();
