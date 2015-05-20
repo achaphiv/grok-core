@@ -119,6 +119,12 @@
         </plugin>
 
         <plugin>
+          <groupId>com.google.code.maven-replacer-plugin</groupId>
+          <artifactId>replacer</artifactId>
+          <version>1.5.3</version>
+        </plugin>
+
+        <plugin>
           <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
           <artifactId>maven-java-formatter-plugin</artifactId>
           <version>0.4</version>
