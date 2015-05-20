@@ -13,13 +13,6 @@
             <enabled>false</enabled>
           </snapshots>
         </repository>
-        <repository>
-          <id>auto-value-babsher-mvn-repo</id>
-          <url>https://rawgit.com/babsher/auto/master/value/target/mvn-repo/</url>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </repository>
       </repositories>
     </profile>
   </profiles>
