@@ -27,8 +27,8 @@ public abstract class Crag {
                    .build();
   }
 
-  public static AutoValue_Crag.Builder_AutoValue_Crag create() {
-    return AutoValue_Crag.builder();
+  public static Builder create() {
+    return new AutoValue_Crag.Builder().regionId(0);
   }
 
   @Id
@@ -59,4 +59,25 @@ public abstract class Crag {
   public abstract long getRegionId();
 
   public static String COLLECTION = "crags";
+
+  @AutoValue.Builder
+  public abstract static class Builder {
+    Builder() {}
+
+    public abstract Builder id(long value);
+
+    public abstract Builder name(String value);
+
+    public abstract Builder country(String value);
+
+    public abstract Builder city(String value);
+
+    public abstract Builder state(String value);
+
+    public abstract Builder location(GeoJsonObject value);
+
+    public abstract Builder regionId(long value);
+
+    public abstract Crag build();
+  }
 }

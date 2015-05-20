@@ -32,8 +32,8 @@ public abstract class Route {
                    .build();
   }
 
-  public static AutoValue_Route.Builder_AutoValue_Route create() {
-    return AutoValue_Route.builder();
+  public static Builder create() {
+    return new AutoValue_Route.Builder();
   }
 
   @Id
@@ -65,4 +65,29 @@ public abstract class Route {
   @JsonProperty
   @Nullable
   public abstract String getSearchIndex();
+
+  @AutoValue.Builder
+  public abstract static class Builder {
+    Builder() {}
+
+    public abstract Builder id(Long value);
+
+    public abstract Builder cragId(Long value);
+
+    public abstract Builder name(String value);
+
+    public abstract Builder grade(ClimbingGrade value);
+
+    public abstract Builder grokRating(Rating value);
+
+    public abstract Builder image(String value);
+
+    public abstract Builder thumbsUp(Count value);
+
+    public abstract Builder thumbsDown(Count value);
+
+    public abstract Builder searchIndex(String value);
+
+    public abstract Route build();
+  }
 }

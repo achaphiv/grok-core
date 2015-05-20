@@ -2,14 +2,15 @@ package grok.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.auto.value.AutoValue;
+
 import org.mongojack.Id;
 
 @AutoValue
 public abstract class Region {
   public static final String COLLECTION = "regions";
 
-  public static AutoValue_Region.Builder_AutoValue_Region create() {
-    return AutoValue_Region.builder();
+  public static Builder create() {
+    return new AutoValue_Region.Builder();
   }
 
   @Id
@@ -21,4 +22,19 @@ public abstract class Region {
 
   @JsonProperty
   public abstract String getImage();
+
+  @AutoValue.Builder
+  public abstract static class Builder {
+    Builder() {}
+
+    public abstract Builder id(long value);
+
+    @JsonProperty
+    public abstract Builder name(String value);
+
+    @JsonProperty
+    public abstract Builder image(String value);
+
+    public abstract Region build();
+  }
 }

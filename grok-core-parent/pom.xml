@@ -102,7 +102,7 @@
       <dependency>
         <groupId>com.google.auto.value</groupId>
         <artifactId>auto-value</artifactId>
-        <version>1.0-babsher-SNAPSHOT</version>
+        <version>1.1</version>
       </dependency>
 
       <dependency>

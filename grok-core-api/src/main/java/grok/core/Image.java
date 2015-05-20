@@ -17,8 +17,8 @@ public abstract class Image {
                     .build();
   }
 
-  public static AutoValue_Image.Builder_AutoValue_Image builder() {
-    return AutoValue_Image.builder();
+  public static Builder builder() {
+    return new AutoValue_Image.Builder();
   }
 
   @ObjectId
@@ -30,4 +30,19 @@ public abstract class Image {
 
   @JsonProperty
   public abstract String url();
+
+  @AutoValue.Builder
+  public abstract static class Builder {
+    Builder() {}
+
+    public abstract Builder id(String value);
+
+    @JsonProperty
+    public abstract Builder title(String value);
+
+    @JsonProperty
+    public abstract Builder url(String value);
+
+    public abstract Image build();
+  }
 }
