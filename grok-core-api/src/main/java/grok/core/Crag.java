@@ -58,8 +58,6 @@ public abstract class Crag {
   @Nullable
   public abstract long getRegionId();
 
-  public static String COLLECTION = "crags";
-
   @AutoValue.Builder
   public abstract static class Builder {
     Builder() {}

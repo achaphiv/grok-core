@@ -10,9 +10,6 @@ import com.google.auto.value.AutoValue;
 
 @AutoValue
 public abstract class Route {
-  public static final String COLLECTION = "routes";
-  public static final String SEARCH_INDEX = "searchIndex";
-
   @JsonCreator
   public static Route of(@Id @JsonProperty("id") Long id,
                          @JsonProperty("cragId") Long cragId,
