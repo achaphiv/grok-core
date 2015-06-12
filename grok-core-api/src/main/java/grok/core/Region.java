@@ -7,7 +7,6 @@ import org.mongojack.Id;
 
 @AutoValue
 public abstract class Region {
-  public static final String COLLECTION = "regions";
 
   public static Builder create() {
     return new AutoValue_Region.Builder();

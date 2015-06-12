@@ -58,6 +58,12 @@ public abstract class Crag {
   @Nullable
   public abstract long getRegionId();
 
+  @JsonProperty
+  @Nullable
+  public abstract Image getImage();
+
+  public abstract Builder toBuilder();
+
   @AutoValue.Builder
   public abstract static class Builder {
     Builder() {}

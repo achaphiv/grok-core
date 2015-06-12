@@ -51,7 +51,7 @@ public abstract class Route {
 
   @JsonProperty
   @Nullable
-  public abstract String getImage();
+  public abstract Image getImage();
 
   @JsonProperty
   public abstract Count getThumbsUp();
@@ -62,6 +62,8 @@ public abstract class Route {
   @JsonProperty
   @Nullable
   public abstract String getSearchIndex();
+
+  public abstract Builder toBuilder();
 
   @AutoValue.Builder
   public abstract static class Builder {

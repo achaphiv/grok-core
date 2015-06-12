@@ -14,7 +14,16 @@ public abstract class User {
                         @JsonProperty("name") String name,
                         @JsonProperty("location") String location,
                         @JsonProperty("email") String email) {
-    return new AutoValue_User(id, name, location, email);
+    return User.create()
+        .id(id)
+        .name(name)
+        .location(location)
+        .email(email)
+        .build();
+  }
+
+  public static Builder create() {
+    return AutoValue_User.create();
   }
 
   @JsonProperty
@@ -29,4 +38,19 @@ public abstract class User {
 
   @JsonProperty
   public abstract String email();
+
+  @AutoValue.Builder
+  public abstract static class Builder {
+    Builder() {}
+
+    public abstract Builder id(String value);
+
+    public abstract Builder name(String value);
+
+    public abstract Builder location(String value);
+
+    public abstract Builder email(String value);
+
+    public abstract User build();
+  }
 }
