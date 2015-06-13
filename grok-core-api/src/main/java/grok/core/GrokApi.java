@@ -25,6 +25,9 @@ public interface GrokApi {
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}")
   Route route(@Param("id") String id);
 
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}/withCrag")
+  RouteWithCrag routeWithCrag(@Param("id") long id);
+
   @RequestLine("POST " + ROUTES_ENDPOINT)
   void insertRoute(Route r);
 
