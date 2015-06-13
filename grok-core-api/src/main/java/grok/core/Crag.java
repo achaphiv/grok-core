@@ -82,6 +82,8 @@ public abstract class Crag {
 
     public abstract Builder regionId(long value);
 
+    public abstract Builder image(Image image);
+
     public abstract Crag build();
   }
 }

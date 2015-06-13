@@ -61,4 +61,10 @@ public interface GrokApi {
                          @Param("lat") Double latitude,
                          @Param("start") int start,
                          @Param("size") int size);
+
+  @RequestLine("PUT " + CRAGS_ENDPOINT + "/{id}")
+  CragUpdate update(@Param("id") long id, Crag c);
+
+  @RequestLine("PUT " + ROUTES_ENDPOINT + "/{id}")
+  RouteUpdate update(@Param("id") long id, Route r);
 }

@@ -19,6 +19,7 @@ public class TestSerialization {
                                        .country("country")
                                        .city("city")
                                        .state("state")
+                                        .image(Image.of("1", "title", "url"))
                                        .location(new Point(1.0, 1.0)).build();
 
   @Test

@@ -79,7 +79,7 @@ public abstract class Route {
 
     public abstract Builder grokRating(Rating value);
 
-    public abstract Builder image(String value);
+    public abstract Builder image(Image value);
 
     public abstract Builder thumbsUp(Count value);
 

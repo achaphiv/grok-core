@@ -52,7 +52,7 @@ public class GrokApiTest {
     Route expected = Route.create()
                           .id(1l)
                           .cragId(1l).grokRating(Rating.of(0))
-                          .image("image url")
+                          .image(Image.of("1", "title", "url"))
                           .name("Super Climb")
                           .grade(ClimbingGrade.yds("5.5")).thumbsDown(Count.of(0)).thumbsUp(Count.of(1))
                           .searchIndex("Super Climb 5.5")
