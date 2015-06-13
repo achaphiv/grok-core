@@ -21,7 +21,6 @@ public abstract class Image {
     return new AutoValue_Image.Builder();
   }
 
-  @ObjectId
   @JsonProperty
   public abstract String id();
 
