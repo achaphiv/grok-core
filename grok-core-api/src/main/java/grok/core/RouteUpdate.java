@@ -1,20 +1,25 @@
 package grok.core;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.auto.value.AutoValue;
+
 import java.util.Date;
 
-public class RouteUpdate {
+@AutoValue
+public abstract class RouteUpdate {
 
-    private final String clientId;
-    private final Date date;
-    private final Route route;
+  @JsonCreator
+  public static RouteUpdate of(String clientId, Date date, Route route) {
+    return new AutoValue_RouteUpdate(clientId, date, route);
+  }
 
-    private RouteUpdate(String clientId, Date date, Route route) {
-        this.clientId = clientId;
-        this.date = date;
-        this.route = route;
-    }
+  @JsonProperty
+  public abstract String clientId();
 
-    public static RouteUpdate of(String clientId, Date date, Route route) {
-        return new RouteUpdate(clientId, date, route);
-    }
+  @JsonProperty
+  public abstract Date date();
+
+  @JsonProperty
+  public abstract Route route();
 }

@@ -1,20 +1,23 @@
 package grok.core;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.auto.value.AutoValue;
+
 import java.util.Date;
 
-public class CragUpdate {
+@AutoValue
+public abstract class CragUpdate {
 
-    private final String clientId;
-    private final Date date;
-    private final Crag crag;
+  @JsonCreator
+  public static CragUpdate of(String clientId, Date date, Crag crag) {
+    return new AutoValue_CragUpdate(clientId, date, crag);
+  }
 
-    private CragUpdate(String clientId, Date date, Crag crag) {
-        this.clientId = clientId;
-        this.date = date;
-        this.crag = crag;
-    }
-
-    public static CragUpdate of(String clientId, Date date, Crag crag) {
-        return new CragUpdate(clientId, date, crag);
-    }
+  @JsonProperty
+  public abstract String clientId();
+  @JsonProperty
+  public abstract Date date();
+  @JsonProperty
+  public abstract Crag crag();
 }
