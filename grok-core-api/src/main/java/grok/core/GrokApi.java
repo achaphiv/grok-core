@@ -32,16 +32,22 @@ public interface GrokApi {
   void insertRoute(Route r);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&start={start}&size={size}")
-  List<Route> searchRoutes(@Param("query") String query, @Param("start") int start, @Param("size") int size);
+  List<Route> searchRoutes(@Param("query") String query,
+                           @Param("start") int start,
+                           @Param("size") int size);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}")
   List<Route> searchRoutes(@Param("query") String query);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}&start={start}&size={size}")
-  List<Route> searchRoutes(@Param("query") String query, @Param("crag") String crag, @Param("start") int start, @Param("size") int size);
+  List<Route> searchRoutes(@Param("query") String query,
+                           @Param("crag") String crag,
+                           @Param("start") int start,
+                           @Param("size") int size);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}")
-  List<Route> searchRoutes(@Param("query") String query, @Param("crag") String crag);
+  List<Route> searchRoutes(@Param("query") String query,
+                           @Param("crag") String crag);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<Crag> searchCrags(@Param("query") String query,
