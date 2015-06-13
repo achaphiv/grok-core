@@ -71,9 +71,9 @@ public interface GrokApi {
                          @Param("start") int start,
                          @Param("size") int size);
 
-  @RequestLine("PUT " + CRAGS_ENDPOINT + "/{id}")
-  CragUpdate update(@Param("id") long id, Crag c);
+  @RequestLine("PUT " + CRAGS_ENDPOINT + "/")
+  CragUpdate update(Crag c);
 
-  @RequestLine("PUT " + ROUTES_ENDPOINT + "/{id}")
-  RouteUpdate update(@Param("id") long id, Route r);
+  @RequestLine("PUT " + ROUTES_ENDPOINT + "/")
+  RouteUpdate update(Route r);
 }
