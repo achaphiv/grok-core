@@ -2,6 +2,7 @@ package grok.core;
 
 import javax.annotation.Nullable;
 
+import org.geojson.GeoJsonObject;
 import org.mongojack.Id;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -17,7 +18,8 @@ public abstract class Route {
                          @JsonProperty("grade") ClimbingGrade grade,
                          @JsonProperty("grokRating") Rating rating,
                          @JsonProperty("thumbsDown") Count thumbsDown,
-                         @JsonProperty("thumbsUp") Count thumbsUp) {
+                         @JsonProperty("thumbsUp") Count thumbsUp,
+                         @JsonProperty("location") GeoJsonObject location) {
     return create().id(id)
                    .cragId(cragId)
                    .name(name)
@@ -26,6 +28,7 @@ public abstract class Route {
                    .thumbsUp(thumbsUp)
                    .grokRating(rating)
                    .searchIndex(name + " " + grade)
+                   .location(location)
                    .build();
   }
 
@@ -63,6 +66,10 @@ public abstract class Route {
   @Nullable
   public abstract String getSearchIndex();
 
+  @JsonProperty
+  @Nullable
+  public abstract GeoJsonObject getLocation();
+
   public abstract Builder toBuilder();
 
   @AutoValue.Builder
@@ -86,6 +93,8 @@ public abstract class Route {
     public abstract Builder thumbsDown(Count value);
 
     public abstract Builder searchIndex(String value);
+
+    public abstract Builder location(GeoJsonObject value);
 
     public abstract Route build();
   }
