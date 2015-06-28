@@ -46,17 +46,22 @@ public interface GrokApi {
   @RequestLine("POST " + ROUTES_ENDPOINT)
   void insertRoute(Route r);
 
-  @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&start={start}&size={size}")
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/")
   List<Route> searchRoutes(@Param("query") String query,
                            @Param("lat") Double lat,
                            @Param("lng") Double lng,
                            @Param("start") int start,
                            @Param("size") int size);
 
-  @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}")
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/")
+  List<Route> searchRoutes(@Param("query") String query,
+                           @Param("start") int start,
+                           @Param("size") int size);
+
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/")
   List<Route> searchRoutes(@Param("query") String query);
 
-  @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}&start={start}&size={size}")
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/")
   List<Route> searchRoutes(@Param("query") String query,
                            @Param("crag") String crag,
                            @Param("lat") Double lat,
@@ -64,27 +69,27 @@ public interface GrokApi {
                            @Param("start") int start,
                            @Param("size") int size);
 
-  @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}")
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/")
   List<Route> searchRoutes(@Param("query") String query,
                            @Param("crag") String crag);
 
-  @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/")
   List<Crag> searchCrags(@Param("query") String query,
                          @Param("lng") Double longitude,
                          @Param("lat") Double latitude,
                          @Param("start") int start,
                          @Param("size") int size);
 
-  @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}")
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/")
   List<Crag> searchCrags(@Param("query") String query,
                          @Param("lng") Double longitude,
                          @Param("lat") Double latitude);
 
-  @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}")
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/")
   List<Crag> searchCrags(@Param("lng") Double longitude,
                          @Param("lat") Double latitude);
 
-  @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}&start={start}&size={size}")
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/")
   List<Crag> searchCrags(@Param("lng") Double longitude,
                          @Param("lat") Double latitude,
                          @Param("start") int start,
