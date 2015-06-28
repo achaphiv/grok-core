@@ -28,11 +28,28 @@ public interface GrokApi {
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}/withCrag")
   RouteWithCrag routeWithCrag(@Param("id") long id);
 
+  @RequestLine("GET" + ROUTES_ENDPOINT + "/withCrag")
+  List<RouteWithCrag> routesWithCrag(
+      @Param("query") String query,
+      @Param("lat") String lat,
+      @Param("lng") String lng,
+      @Param("start") int start,
+      @Param("size") int pageSize);
+
+  @RequestLine("GET" + ROUTES_ENDPOINT + "/withCrag")
+  List<RouteWithCrag> routesWithCrag(
+      @Param("query") String query,
+      @Param("crag") Long id,
+      @Param("start") int start,
+      @Param("size") int pageSize);
+
   @RequestLine("POST " + ROUTES_ENDPOINT)
   void insertRoute(Route r);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&start={start}&size={size}")
   List<Route> searchRoutes(@Param("query") String query,
+                           @Param("lat") Double lat,
+                           @Param("lng") Double lng,
                            @Param("start") int start,
                            @Param("size") int size);
 
@@ -42,6 +59,8 @@ public interface GrokApi {
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}&start={start}&size={size}")
   List<Route> searchRoutes(@Param("query") String query,
                            @Param("crag") String crag,
+                           @Param("lat") Double lat,
+                           @Param("lng") Double lng,
                            @Param("start") int start,
                            @Param("size") int size);
 
