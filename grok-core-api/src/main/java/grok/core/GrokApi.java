@@ -98,9 +98,9 @@ public interface GrokApi {
 
   @RequestLine("PUT " + CRAGS_ENDPOINT + "/")
   @Headers("Content-Type: application/json")
-  String update(Crag c);
+  Id update(Crag c);
 
   @RequestLine("PUT " + ROUTES_ENDPOINT + "/")
   @Headers("Content-Type: application/json")
-  String update(Route r);
+  Id update(Route r);
 }
