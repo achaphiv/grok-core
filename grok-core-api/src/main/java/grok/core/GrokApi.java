@@ -75,23 +75,23 @@ public interface GrokApi {
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<Crag> searchCrags(@Param("query") String query,
-                         @Param("lng") Double longitude,
                          @Param("lat") Double latitude,
+                         @Param("lng") Double longitude,
                          @Param("start") int start,
                          @Param("size") int size);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}")
   List<Crag> searchCrags(@Param("query") String query,
-                         @Param("lng") Double longitude,
-                         @Param("lat") Double latitude);
+                         @Param("lat") Double latitude,
+                         @Param("lng") Double longitude);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}")
-  List<Crag> searchCrags(@Param("lng") Double longitude,
-                         @Param("lat") Double latitude);
+  List<Crag> searchCrags(@Param("lat") Double latitude,
+                         @Param("lng") Double longitude);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?lat={lat}&lng={lng}&start={start}&size={size}")
-  List<Crag> searchCrags(@Param("lng") Double longitude,
-                         @Param("lat") Double latitude,
+  List<Crag> searchCrags(@Param("lat") Double latitude,
+                         @Param("lng") Double longitude,
                          @Param("start") int start,
                          @Param("size") int size);
 
