@@ -9,10 +9,10 @@ import com.google.auto.value.AutoValue;
 public abstract class Id {
 
   @JsonCreator
-  public static Id of(@JsonProperty String id) {
+  public static Id of(@JsonProperty("id") String id) {
     return new AutoValue_Id(id);
   }
 
-  @JsonValue
+  @JsonProperty
   public abstract String id();
 }

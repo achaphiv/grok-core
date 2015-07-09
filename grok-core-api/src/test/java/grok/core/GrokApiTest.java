@@ -1,13 +1,12 @@
 package grok.core;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
 
+import feign.jackson.JacksonEncoder;
 import org.geojson.Point;
 import org.junit.Rule;
 import org.junit.Test;
@@ -24,6 +23,7 @@ public class GrokApiTest {
 
   private GrokApi client() {
     return Feign.builder()
+                .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
                 .target(GrokApi.class, "http://localhost:" + server.port());
   }
@@ -60,6 +60,24 @@ public class GrokApiTest {
 
     server.stubFor(get(urlEqualTo(GrokApi.ROUTES_ENDPOINT + "/dummy")).willReturn(aResponse().withBody(json(expected))));
     Route actual = client().route("dummy");
+
+    assertThat(actual).isEqualTo(expected);
+  }
+
+  @Test
+  public void testUpdateRoute() throws Exception {
+    Route route = Route.create()
+        .id(1l)
+        .cragId(1l).grokRating(Rating.of(0))
+        .image(Image.of("1", "title", "url"))
+        .name("Super Climb")
+        .grade(ClimbingGrade.yds("5.5")).thumbsDown(Count.of(0)).thumbsUp(Count.of(1))
+        .searchIndex("Super Climb 5.5")
+        .build();
+    Id expected = Id.of("123123");
+
+    server.stubFor(put(urlEqualTo(GrokApi.ROUTES_ENDPOINT + "/")).willReturn(aResponse().withBody(json(expected))));
+    Id actual = client().update(route);
 
     assertThat(actual).isEqualTo(expected);
   }
