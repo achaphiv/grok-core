@@ -1,10 +1,9 @@
 package grok.core;
 
-import java.util.List;
-
-import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+
+import java.util.List;
 
 public interface GrokApi {
   String CRAGS_ENDPOINT = "/crag";
@@ -22,6 +21,11 @@ public interface GrokApi {
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes")
   List<Route> getRoutesForCrag(@Param("id") String id);
+
+  @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes/?start={start}&size={size}")
+  List<Route> getRoutesForCrag(@Param("id") String id,
+                               @Param("start") int start,
+                               @Param("size") int size);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}")
   Route route(@Param("id") String id);
@@ -97,10 +101,8 @@ public interface GrokApi {
                          @Param("size") int size);
 
   @RequestLine("PUT " + CRAGS_ENDPOINT + "/")
-  @Headers("Content-Type: application/json")
   Id update(Crag c);
 
   @RequestLine("PUT " + ROUTES_ENDPOINT + "/")
-  @Headers("Content-Type: application/json")
   Id update(Route r);
 }
