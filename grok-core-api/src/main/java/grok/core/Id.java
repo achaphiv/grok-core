@@ -2,6 +2,7 @@ package grok.core;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.auto.value.AutoValue;
 
 @AutoValue
@@ -12,6 +13,6 @@ public abstract class Id {
     return new AutoValue_Id(id);
   }
 
-  @JsonProperty
+  @JsonValue
   public abstract String id();
 }
