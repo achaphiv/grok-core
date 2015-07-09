@@ -97,10 +97,8 @@ public interface GrokApi {
                          @Param("size") int size);
 
   @RequestLine("PUT " + CRAGS_ENDPOINT + "/")
-  @Headers("Content-Type: application/json")
   Id update(Crag c);
 
   @RequestLine("PUT " + ROUTES_ENDPOINT + "/")
-  @Headers("Content-Type: application/json")
   Id update(Route r);
 }
