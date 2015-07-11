@@ -8,7 +8,7 @@ import com.google.auto.value.AutoValue;
 public abstract class RouteWithCrag {
 
   @JsonCreator
-  public static RouteWithCrag of(Route r, Crag c) {
+  public static RouteWithCrag of(@JsonProperty("route") Route r, @JsonProperty("crag") Crag c) {
     return new AutoValue_RouteWithCrag(r, c);
   }
 
