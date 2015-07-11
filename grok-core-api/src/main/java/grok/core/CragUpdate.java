@@ -20,6 +20,8 @@ public abstract class CragUpdate {
     return new AutoValue_CragUpdate(id, clientId, date, crag);
   }
 
+  CragUpdate() {}
+
   @Id
   @Nullable
   @JsonProperty

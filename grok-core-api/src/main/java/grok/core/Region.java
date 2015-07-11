@@ -12,6 +12,8 @@ public abstract class Region {
     return new AutoValue_Region.Builder();
   }
 
+  Region() {}
+
   @Id
   @JsonProperty
   public abstract long getId();

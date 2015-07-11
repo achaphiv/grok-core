@@ -12,6 +12,8 @@ public abstract class RouteWithCrag {
     return new AutoValue_RouteWithCrag(r, c);
   }
 
+  RouteWithCrag() {}
+
   @JsonProperty
   public abstract Route route();
 

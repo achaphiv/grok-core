@@ -31,6 +31,8 @@ public abstract class Crag {
     return new AutoValue_Crag.Builder().regionId(0);
   }
 
+  Crag() {}
+
   @Id
   @JsonProperty
   public abstract long getId();

@@ -19,6 +19,8 @@ public abstract class RouteUpdate {
     return new AutoValue_RouteUpdate(id, clientId, date, route);
   }
 
+  RouteUpdate() {}
+
   @Id
   @Nullable
   @JsonProperty

@@ -13,6 +13,8 @@ public abstract class Id {
     return new AutoValue_Id(id);
   }
 
+  Id() {}
+
   @JsonProperty
   public abstract String id();
 }

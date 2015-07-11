@@ -1,21 +1,28 @@
 package grok.core;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.put;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
-import feign.jackson.JacksonEncoder;
 import org.geojson.Point;
 import org.junit.Rule;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.google.common.base.Defaults;
 
 import feign.Feign;
+import feign.FeignException;
 import feign.jackson.JacksonDecoder;
+import feign.jackson.JacksonEncoder;
 
 public class GrokApiTest {
   @Rule
@@ -26,6 +33,29 @@ public class GrokApiTest {
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
                 .target(GrokApi.class, "http://localhost:" + server.port());
+  }
+
+  @Test
+  public void zz() throws Exception {
+    for (Method m : GrokApi.class.getDeclaredMethods()) {
+      try {
+      m.invoke(client(), dummyParametersOfTypes(m.getParameterTypes()));
+      } catch (InvocationTargetException e) {
+        if (e.getCause() instanceof IllegalArgumentException || e.getCause() instanceof FeignException) {
+          //ignore
+        } else {
+          throw e;
+        }
+      }
+    }
+  }
+
+  private Object[] dummyParametersOfTypes(Class<?>[] parameters) {
+    Object[] result = new Object[parameters.length];
+    for (int i = 0; i < parameters.length; i++) {
+      result[i] = Defaults.defaultValue(parameters[i]);
+    }
+    return result;
   }
 
   @Test

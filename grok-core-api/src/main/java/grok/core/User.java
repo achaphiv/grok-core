@@ -26,6 +26,8 @@ public abstract class User {
     return AutoValue_User.create();
   }
 
+  User() {}
+
   @JsonProperty
   @Nullable
   public abstract String id();
