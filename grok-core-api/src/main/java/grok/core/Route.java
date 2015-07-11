@@ -36,6 +36,8 @@ public abstract class Route {
     return new AutoValue_Route.Builder();
   }
 
+  Route() {}
+
   @Id
   @JsonProperty
   public abstract Long getId();
