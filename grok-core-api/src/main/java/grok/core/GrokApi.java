@@ -33,7 +33,7 @@ public interface GrokApi {
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}/withCrag")
   RouteWithCrag routeWithCrag(@Param("id") long id);
 
-  @RequestLine("GET" + ROUTES_ENDPOINT + "/withCrag/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/withCrag/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<RouteWithCrag> routesWithCrag(
       @Param("query") String query,
       @Param("lat") String lat,
@@ -41,7 +41,7 @@ public interface GrokApi {
       @Param("start") int start,
       @Param("size") int pageSize);
 
-  @RequestLine("GET" + ROUTES_ENDPOINT + "/withCrag/?query={query}&crag={crag}&start={start}&size={size}")
+  @RequestLine("GET " + ROUTES_ENDPOINT + "/withCrag/?query={query}&crag={crag}&start={start}&size={size}")
   List<RouteWithCrag> routesWithCrag(
       @Param("query") String query,
       @Param("crag") Long id,
