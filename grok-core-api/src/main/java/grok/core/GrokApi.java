@@ -1,5 +1,6 @@
 package grok.core;
 
+import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
@@ -17,6 +18,7 @@ public interface GrokApi {
   Crag crag(@Param("id") String id);
 
   @RequestLine("POST " + CRAGS_ENDPOINT)
+  @Headers("Content-Type: application/json")
   void insertCrag(Crag c);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes")
@@ -49,6 +51,7 @@ public interface GrokApi {
       @Param("size") int pageSize);
 
   @RequestLine("POST " + ROUTES_ENDPOINT)
+  @Headers("Content-Type: application/json")
   void insertRoute(Route r);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
@@ -101,8 +104,10 @@ public interface GrokApi {
                          @Param("size") int size);
 
   @RequestLine("PUT " + CRAGS_ENDPOINT + "/")
+  @Headers("Content-Type: application/json")
   Id update(Crag c);
 
   @RequestLine("PUT " + ROUTES_ENDPOINT + "/")
+  @Headers("Content-Type: application/json")
   Id update(Route r);
 }
