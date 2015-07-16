@@ -35,7 +35,8 @@ public abstract class Crag {
 
   @Id
   @JsonProperty
-  public abstract long getId();
+  @Nullable
+  public abstract Long getId();
 
   @JsonProperty
   public abstract String getName();
@@ -70,7 +71,7 @@ public abstract class Crag {
   public abstract static class Builder {
     Builder() {}
 
-    public abstract Builder id(long value);
+    public abstract Builder id(Long value);
 
     public abstract Builder name(String value);
 
