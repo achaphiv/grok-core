@@ -39,7 +39,6 @@ public class GrokApiTest {
                  .city("City")
                  .country("Country")
                  .state("State")
-                 .regionId(1l)
                  .location(new Point(1.0, 1.0))
                  .build();
     List<Crag> expected = Arrays.asList(c);

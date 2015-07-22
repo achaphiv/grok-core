@@ -1,1 +1,1 @@
-{"id":1,"name":"name","country":"country","city":"city","state":"state","location":{"type":"Point","coordinates":[1.0,1.0]},"regionId":0,"image":{"id":"1","title":"title","url":"url"}}
+{"id":1,"name":"name","country":"country","city":"city","state":"state","location":{"type":"Point","coordinates":[1.0,1.0]},"image":{"id":"1","title":"title","url":"url"}}

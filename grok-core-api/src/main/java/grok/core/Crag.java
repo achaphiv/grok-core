@@ -28,7 +28,7 @@ public abstract class Crag {
   }
 
   public static Builder create() {
-    return new AutoValue_Crag.Builder().regionId(0);
+    return new AutoValue_Crag.Builder();
   }
 
   Crag() {}
@@ -59,10 +59,6 @@ public abstract class Crag {
 
   @JsonProperty
   @Nullable
-  public abstract long getRegionId();
-
-  @JsonProperty
-  @Nullable
   public abstract Image getImage();
 
   public abstract Builder toBuilder();
@@ -82,8 +78,6 @@ public abstract class Crag {
     public abstract Builder state(String value);
 
     public abstract Builder location(GeoJsonObject value);
-
-    public abstract Builder regionId(long value);
 
     public abstract Builder image(Image image);
 
