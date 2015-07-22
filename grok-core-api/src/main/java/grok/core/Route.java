@@ -40,6 +40,7 @@ public abstract class Route {
 
   @Id
   @JsonProperty
+  @Nullable
   public abstract Long getId();
 
   @JsonProperty
