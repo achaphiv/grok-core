@@ -28,7 +28,7 @@ Using in another project
 <dependency>
   <groupId>com.grokclimbing.grok.core</groupId>
   <artifactId>grok-core-api</artifactId>
-  <version>0.2.46</version>
+  <version>(INSERT VERSION HERE)</version>
 </dependency>
 ```
 
