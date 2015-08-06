@@ -21,7 +21,7 @@
       <artifactId>guava</artifactId>
     </dependency>
 
-    <!-- Only using annotations from these dependencies-->
+    <!-- Only using annotations from these dependencies -->
     <dependency>
       <groupId>com.netflix.feign</groupId>
       <artifactId>feign-core</artifactId>
