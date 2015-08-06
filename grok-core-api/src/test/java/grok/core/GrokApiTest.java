@@ -19,6 +19,7 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
+import feign.slf4j.Slf4jLogger;
 
 public class GrokApiTest {
   @Rule
@@ -26,6 +27,7 @@ public class GrokApiTest {
 
   private GrokApi client() {
     return Feign.builder()
+                .logger(new Slf4jLogger())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
                 .target(GrokApi.class, "http://localhost:" + server.port());

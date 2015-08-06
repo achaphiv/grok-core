@@ -108,6 +108,11 @@
         <artifactId>feign-jackson</artifactId>
         <version>${version.feign}</version>
       </dependency>
+      <dependency>
+        <groupId>com.netflix.feign</groupId>
+        <artifactId>feign-slf4j</artifactId>
+        <version>${version.feign}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>

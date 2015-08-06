@@ -66,6 +66,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>com.netflix.feign</groupId>
+      <artifactId>feign-slf4j</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.github.tomakehurst</groupId>
       <artifactId>wiremock</artifactId>
       <scope>test</scope>
