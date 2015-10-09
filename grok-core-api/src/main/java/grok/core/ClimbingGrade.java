@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.auto.value.AutoValue;
 import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Multimaps;
 
@@ -49,6 +50,17 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
      * Used in Great Britain and Ireland.
      */
     BRITISH;
+
+    /**
+     * E.G. YDS.possibleValues() = { 5.1, 5.2, 5.3, ..., 5.15d }
+     */
+    public ImmutableSet<String> possibleValues() {
+      ImmutableSet.Builder<String> known = ImmutableSet.builder();
+      for (ClimbingGrade grade : KNOWN) {
+        known.add(grade.valueIn(this));
+      }
+      return known.build();
+    }
   }
 
   public static ClimbingGrade yds(String value) {
@@ -136,7 +148,7 @@ public abstract class ClimbingGrade implements Comparable<ClimbingGrade> {
 
   ClimbingGrade() {}
 
-  public abstract ImmutableSetMultimap<System, String> values();
+  abstract ImmutableSetMultimap<System, String> values();
 
   public String valueIn(System system) {
     return Joiner.on("/").join(values().get(system));

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.auto.value.AutoValue;
 import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Multimaps;
 
@@ -32,6 +33,14 @@ public abstract class BoulderingGrade implements Comparable<BoulderingGrade> {
      * The B-System conceived by John Gill in the 1950s.
      */
     B;
+    
+    public ImmutableSet<String> possibleValues() {
+      ImmutableSet.Builder<String> known = ImmutableSet.builder();
+      for (BoulderingGrade grade : KNOWN) {
+        known.add(grade.valueIn(this));
+      }
+      return known.build();
+    }
   }
 
   public static BoulderingGrade of(String value, System system) {
@@ -88,7 +97,7 @@ public abstract class BoulderingGrade implements Comparable<BoulderingGrade> {
 
   BoulderingGrade() {}
 
-  public abstract ImmutableSetMultimap<System, String> values();
+  abstract ImmutableSetMultimap<System, String> values();
 
   public String valueIn(System system) {
     return Joiner.on("/").join(values().get(system));
