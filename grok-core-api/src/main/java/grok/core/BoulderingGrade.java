@@ -11,7 +11,6 @@ import com.google.auto.value.AutoValue;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Multimaps;
-import com.google.common.collect.SetMultimap;
 
 /**
  * @see <a href="http://en.wikipedia.org/wiki/Grade_%28bouldering%29"></a>
@@ -89,7 +88,7 @@ public abstract class BoulderingGrade implements Comparable<BoulderingGrade> {
 
   BoulderingGrade() {}
 
-  abstract SetMultimap<System, String> values();
+  public abstract ImmutableSetMultimap<System, String> values();
 
   public String valueIn(System system) {
     return Joiner.on("/").join(values().get(system));

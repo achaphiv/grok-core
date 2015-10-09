@@ -12,7 +12,7 @@
   </prerequisites>
 
   <properties>
-    <real.project.version>0.7</real.project.version>
+    <real.project.version>0.8</real.project.version>
 
     <bintray.repo>grok/maven</bintray.repo>
     <bintray.package>grok-core</bintray.package>
