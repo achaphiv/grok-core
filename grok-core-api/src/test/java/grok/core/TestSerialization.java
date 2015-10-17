@@ -14,18 +14,20 @@ import com.google.common.io.Resources;
 public class TestSerialization {
   private static final ObjectMapper MAPPER = new ObjectMapper();
   private static final Crag crag = Crag.create()
-                                       .id(Id.of("1"))
-                                       .name("name")
-                                       .country("country")
-                                       .city("city")
-                                       .state("state")
-                                        .image(Image.of("1", "title", "url"))
-                                       .location(new Point(1.0, 1.0)).build();
+      .id(Id.of("1"))
+      .name("name")
+      .country("country")
+      .city("city")
+      .state("state")
+      .image(Image.of("1", "title", "url"))
+      .location(new Point(1.0, 1.0))
+      .build();
 
   @Test
   @SuppressWarnings("unchecked")
   public void serializesCragToJSON() throws Exception {
-    assertThat(MAPPER.convertValue(crag, Map.class)).isEqualTo(MAPPER.readValue(cragJson(), Map.class));
+    assertThat(MAPPER.convertValue(crag, Map.class))
+        .isEqualTo(MAPPER.readValue(cragJson(), Map.class));
   }
 
   @Test
@@ -37,7 +39,7 @@ public class TestSerialization {
     return fixture("crag.json");
   }
 
-  private String fixture(String filename) throws Exception {
-    return Resources.toString(Resources.getResource(getClass(), filename), UTF_8).trim();
+  private String fixture(String file) throws Exception {
+    return Resources.toString(Resources.getResource(getClass(), file), UTF_8);
   }
 }
