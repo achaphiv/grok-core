@@ -24,6 +24,12 @@ public class TestSerialization {
                                        .location(new Point(1.0, 1.0)).build();
 
   @Test
+  @SuppressWarnings("unchecked")
+  public void serializesCragToJSON() throws Exception {
+    assertThat(MAPPER.convertValue(crag, Map.class)).isEqualTo(MAPPER.readValue(cragJson(), Map.class));
+  }
+
+  @Test
   public void deserializesCragFromJSON() throws Exception {
     assertThat(MAPPER.readValue(cragJson(), Crag.class)).isEqualTo(crag);
   }
