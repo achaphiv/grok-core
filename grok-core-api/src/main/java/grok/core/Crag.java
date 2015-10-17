@@ -1,18 +1,18 @@
 package grok.core;
 
+import javax.annotation.Nullable;
+
+import org.geojson.GeoJsonObject;
+import org.mongojack.ObjectId;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.auto.value.AutoValue;
 
-import org.geojson.GeoJsonObject;
-import org.mongojack.Id;
-
-import javax.annotation.Nullable;
-
 @AutoValue
 public abstract class Crag {
   @JsonCreator
-  public static Crag of(@Id @JsonProperty("id") Long id,
+  public static Crag of(@ObjectId @JsonProperty("id") Id id,
                         @JsonProperty("name") String name,
                         @JsonProperty("country") String country,
                         @JsonProperty("city") String city,
@@ -27,16 +27,16 @@ public abstract class Crag {
                    .build();
   }
 
-  public static Builder create() {
+  public static Builder create() { 
     return new AutoValue_Crag.Builder();
   }
 
   Crag() {}
 
-  @Id
-  @JsonProperty
+  @ObjectId
+  @JsonProperty("id")
   @Nullable
-  public abstract Long getId();
+  public abstract Id getId();
 
   @JsonProperty
   public abstract String getName();
@@ -67,7 +67,7 @@ public abstract class Crag {
   public abstract static class Builder {
     Builder() {}
 
-    public abstract Builder id(Long value);
+    public abstract Builder id(Id value);
 
     public abstract Builder name(String value);
 

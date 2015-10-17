@@ -27,7 +27,7 @@ public class GrokApiTest {
   @Test
   public void crags() throws Exception {
     Crag c = Crag.create()
-                 .id(1l)
+                 .id(Id.of("1"))
                  .name("crag")
                  .city("City")
                  .country("Country")
@@ -45,8 +45,9 @@ public class GrokApiTest {
   @Test
   public void climbs() throws Exception {
     Route expected = Route.create()
-                          .id(1l)
-                          .cragId(1l).grokRating(Rating.of(0))
+                          .id(Id.of("1"))
+                          .cragId(Id.of("1"))
+                          .grokRating(Rating.of(0))
                           .image(Image.of("1", "title", "url"))
                           .name("Super Climb")
                           .grade(ClimbingGrade.yds("5.5")).thumbsDown(Count.of(0)).thumbsUp(Count.of(1))
@@ -62,8 +63,9 @@ public class GrokApiTest {
   @Test
   public void testUpdateRoute() throws Exception {
     Route route = Route.create()
-        .id(1l)
-        .cragId(1l).grokRating(Rating.of(0))
+        .id(Id.of("1"))
+        .cragId(Id.of("1"))
+        .grokRating(Rating.of(0))
         .image(Image.of("1", "title", "url"))
         .name("Super Climb")
         .grade(ClimbingGrade.yds("5.5")).thumbsDown(Count.of(0)).thumbsUp(Count.of(1))

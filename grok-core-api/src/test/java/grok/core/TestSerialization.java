@@ -4,6 +4,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.geojson.Point;
 import org.junit.Test;
@@ -14,18 +15,13 @@ import com.google.common.io.Resources;
 public class TestSerialization {
   private static final ObjectMapper MAPPER = new ObjectMapper();
   private static final Crag crag = Crag.create()
-                                       .id(1l)
+                                       .id(Id.of("1"))
                                        .name("name")
                                        .country("country")
                                        .city("city")
                                        .state("state")
                                         .image(Image.of("1", "title", "url"))
                                        .location(new Point(1.0, 1.0)).build();
-
-  @Test
-  public void serializesCragToJSON() throws Exception {
-    assertThat(MAPPER.writeValueAsString(crag)).isEqualTo(cragJson());
-  }
 
   @Test
   public void deserializesCragFromJSON() throws Exception {
