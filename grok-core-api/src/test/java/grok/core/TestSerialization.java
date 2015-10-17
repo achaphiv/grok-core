@@ -3,7 +3,6 @@ package grok.core;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.geojson.Point;
@@ -34,15 +33,11 @@ public class TestSerialization {
     assertThat(MAPPER.readValue(cragJson(), Crag.class)).isEqualTo(crag);
   }
 
-  private String cragJson() {
+  private String cragJson() throws Exception {
     return fixture("crag.json");
   }
 
-  private String fixture(String filename) {
-    try {
-      return Resources.toString(Resources.getResource(getClass(), filename), UTF_8).trim();
-    } catch (IOException e) {
-      throw new AssertionError(e);
-    }
+  private String fixture(String filename) throws Exception {
+    return Resources.toString(Resources.getResource(getClass(), filename), UTF_8).trim();
   }
 }
