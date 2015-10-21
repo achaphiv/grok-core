@@ -6,10 +6,13 @@ import org.geojson.GeoJsonObject;
 import org.mongojack.ObjectId;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.auto.value.AutoValue;
 
 @AutoValue
+@JsonInclude(Include.NON_NULL)
 public abstract class Crag {
   @JsonCreator
   public static Crag of(@ObjectId @JsonProperty("id") Id id,
