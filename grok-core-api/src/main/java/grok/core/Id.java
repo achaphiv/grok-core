@@ -11,6 +11,14 @@ public abstract class Id {
     return new AutoValue_Id(id);
   }
 
+  /**
+   * Use {@link #of(String)} instead. This is here for Jersey deserialization.
+   */
+  @Deprecated
+  public static Id valueOf(String id) {
+    return of(id);
+  }
+
   Id() {}
 
   @Deprecated
