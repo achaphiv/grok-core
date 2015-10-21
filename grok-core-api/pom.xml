@@ -37,11 +37,6 @@
       <artifactId>jackson-annotations</artifactId>
       <optional>true</optional>
     </dependency>
-    <dependency>
-      <groupId>org.mongojack</groupId>
-      <artifactId>mongojack</artifactId>
-      <optional>true</optional>
-    </dependency>
 
     <dependency>
       <groupId>com.google.auto.value</groupId>

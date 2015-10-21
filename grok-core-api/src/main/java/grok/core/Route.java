@@ -3,19 +3,18 @@ package grok.core;
 import javax.annotation.Nullable;
 
 import org.geojson.GeoJsonObject;
-import org.mongojack.ObjectId;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.auto.value.AutoValue;
 
 @AutoValue
 @JsonInclude(Include.NON_NULL)
 public abstract class Route {
   @JsonCreator
-  public static Route of(@ObjectId @JsonProperty("id") Id id,
+  public static Route of(@JsonProperty("id") Id id,
                          @JsonProperty("cragId") Id cragId,
                          @JsonProperty("name") String name,
                          @JsonProperty("grade") ClimbingGrade grade,
@@ -41,7 +40,6 @@ public abstract class Route {
 
   Route() {}
 
-  @ObjectId
   @JsonProperty
   @Nullable
   public abstract Id getId();

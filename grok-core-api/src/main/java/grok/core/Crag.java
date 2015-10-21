@@ -3,7 +3,6 @@ package grok.core;
 import javax.annotation.Nullable;
 
 import org.geojson.GeoJsonObject;
-import org.mongojack.ObjectId;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -15,7 +14,7 @@ import com.google.auto.value.AutoValue;
 @JsonInclude(Include.NON_NULL)
 public abstract class Crag {
   @JsonCreator
-  public static Crag of(@ObjectId @JsonProperty("id") Id id,
+  public static Crag of(@JsonProperty("id") Id id,
                         @JsonProperty("name") String name,
                         @JsonProperty("country") String country,
                         @JsonProperty("city") String city,
@@ -36,7 +35,6 @@ public abstract class Crag {
 
   Crag() {}
 
-  @ObjectId
   @JsonProperty("id")
   @Nullable
   public abstract Id getId();
