@@ -1,5 +1,7 @@
 package grok.core;
 
+import com.google.common.collect.Lists;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
@@ -57,6 +59,33 @@ public class GrokApiTest {
     GrokApi toTest = feign(client(GrokApi.ROUTES_ENDPOINT + "/dummy", json(expected)));
     Route actual = toTest.route("dummy");
 
+    assertThat(actual).isEqualTo(expected);
+  }
+
+  @Test
+  public void testRoutesWithCrag() throws Exception {
+
+    Crag expectedCrag = Crag.create()
+        .id(Id.of("1"))
+        .name("a crag")
+        .location(new Point(1.0, 1.0))
+        .build();
+
+    Route expectedRoute = Route.create()
+        .id(Id.of("1"))
+        .cragId(Id.of("1"))
+        .grokRating(Rating.of(0))
+        .image(Image.of("1", "title", "url"))
+        .name("Super Climb")
+        .grade(ClimbingGrade.yds("5.5")).thumbsDown(Count.of(0)).thumbsUp(Count.of(1))
+        .searchIndex("Super Climb 5.5")
+        .build();
+
+    List<RouteWithCrag> expected = Lists.newArrayList(RouteWithCrag.of(expectedRoute, expectedCrag));
+
+    Client client = client(GrokApi.ROUTES_ENDPOINT + "/withCrag/?query=&crag=1&start=0&size=50", json(expected));
+    GrokApi toTest = feign(client);
+    List<RouteWithCrag> actual = toTest.routesWithCrag("", Id.of("1"), 0, 50);
     assertThat(actual).isEqualTo(expected);
   }
 
