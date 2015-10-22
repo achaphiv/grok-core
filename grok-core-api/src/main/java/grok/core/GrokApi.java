@@ -15,17 +15,17 @@ public interface GrokApi {
   List<Crag> crags();
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}")
-  Crag crag(@Param("id") String id);
+  Crag crag(@Param("id") Id id);
 
   @RequestLine("POST " + CRAGS_ENDPOINT)
   @Headers("Content-Type: application/json")
   void insertCrag(Crag c);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes")
-  List<Route> getRoutesForCrag(@Param("id") String id);
+  List<Route> getRoutesForCrag(@Param("id") Id id);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes/?start={start}&size={size}")
-  List<Route> getRoutesForCrag(@Param("id") String id,
+  List<Route> getRoutesForCrag(@Param("id") Id id,
                                @Param("start") int start,
                                @Param("size") int size);
 
@@ -33,7 +33,7 @@ public interface GrokApi {
   Route route(@Param("id") String id);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}/withCrag")
-  RouteWithCrag routeWithCrag(@Param("id") long id);
+  RouteWithCrag routeWithCrag(@Param("id") Id id);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/withCrag/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<RouteWithCrag> routesWithCrag(
@@ -46,7 +46,7 @@ public interface GrokApi {
   @RequestLine("GET " + ROUTES_ENDPOINT + "/withCrag/?query={query}&crag={crag}&start={start}&size={size}")
   List<RouteWithCrag> routesWithCrag(
       @Param("query") String query,
-      @Param("crag") Long id,
+      @Param("crag") Id id,
       @Param("start") int start,
       @Param("size") int pageSize);
 
