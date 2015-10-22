@@ -7,6 +7,8 @@ public class IdToString implements Param.Expander {
   public String expand(Object o) {
     if(o instanceof Id) {
       return ((Id) o).value();
+    } else if (o instanceof String) {
+      return (String) o;
     }
     throw new IllegalArgumentException(o + " is not an instance of Id");
   }
