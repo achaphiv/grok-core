@@ -71,7 +71,7 @@ public interface GrokApi {
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<Route> searchRoutes(@Param("query") String query,
-                           @Param("crag") String crag,
+                           @Param("crag") Id crag,
                            @Param("lat") Double lat,
                            @Param("lng") Double lng,
                            @Param("start") int start,
@@ -79,7 +79,7 @@ public interface GrokApi {
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}")
   List<Route> searchRoutes(@Param("query") String query,
-                           @Param("crag") String crag);
+                           @Param("crag") Id crag);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<Crag> searchCrags(@Param("query") String query,
