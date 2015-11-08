@@ -28,4 +28,9 @@ public abstract class Id {
 
   @JsonValue
   public abstract String value();
+
+  @Override
+  public String toString() {
+    return value();
+  }
 }
