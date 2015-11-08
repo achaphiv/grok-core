@@ -1,10 +1,10 @@
 package grok.core;
 
+import java.util.List;
+
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-
-import java.util.List;
 
 public interface GrokApi {
   String CRAGS_ENDPOINT = "/crag";
@@ -22,18 +22,18 @@ public interface GrokApi {
   void insertCrag(Crag c);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes")
-  List<Route> getRoutesForCrag(@Param(value = "id", expander = IdToString.class) Id id);
+  List<Route> getRoutesForCrag(@Param(value = "id") Id id);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/{id}/routes/?start={start}&size={size}")
-  List<Route> getRoutesForCrag(@Param(value = "id", expander = IdToString.class) Id id,
+  List<Route> getRoutesForCrag(@Param(value = "id") Id id,
                                @Param("start") int start,
                                @Param("size") int size);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}")
-  Route route(@Param(value = "id", expander = IdToString.class) String id);
+  Route route(@Param(value = "id") String id);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/{id}/withCrag")
-  RouteWithCrag routeWithCrag(@Param(value = "id", expander = IdToString.class) Id id);
+  RouteWithCrag routeWithCrag(@Param(value = "id") Id id);
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/withCrag/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<RouteWithCrag> routesWithCrag(
@@ -46,7 +46,7 @@ public interface GrokApi {
   @RequestLine("GET " + ROUTES_ENDPOINT + "/withCrag/?query={query}&crag={crag}&start={start}&size={size}")
   List<RouteWithCrag> routesWithCrag(
       @Param("query") String query,
-      @Param(value = "crag", expander = IdToString.class) Id id,
+      @Param(value = "crag") Id id,
       @Param("start") int start,
       @Param("size") int pageSize);
 
@@ -71,7 +71,7 @@ public interface GrokApi {
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<Route> searchRoutes(@Param("query") String query,
-                           @Param(value = "crag", expander = IdToString.class) Id crag,
+                           @Param(value = "crag") Id crag,
                            @Param("lat") Double lat,
                            @Param("lng") Double lng,
                            @Param("start") int start,
@@ -79,7 +79,7 @@ public interface GrokApi {
 
   @RequestLine("GET " + ROUTES_ENDPOINT + "/?query={query}&crag={crag}")
   List<Route> searchRoutes(@Param("query") String query,
-                           @Param(value = "crag", expander = IdToString.class) Id crag);
+                           @Param(value = "crag") Id crag);
 
   @RequestLine("GET " + CRAGS_ENDPOINT + "/?query={query}&lat={lat}&lng={lng}&start={start}&size={size}")
   List<Crag> searchCrags(@Param("query") String query,
