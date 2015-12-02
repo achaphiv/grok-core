@@ -3,6 +3,7 @@ package grok.core;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.QueryParam;
 
 import com.google.common.annotations.Beta;
@@ -33,7 +34,7 @@ public final class Query extends ForwardingMap<String, Object> {
   @QueryParam(QUERY) public Query setQuery(String value) { return set(QUERY, value); }
   @QueryParam(CRAG) public Query setCrag(Id value) { return set(CRAG, value); }
   @QueryParam(PAGE) public Query setPage(String value) { return set(PAGE, value); }
-  @QueryParam(PER_PAGE) public Query setPerPage(Integer value) { return set(PER_PAGE, value); }
+  @QueryParam(PER_PAGE) @DefaultValue(GrokApi.DEFAULT_PAGE_SIZE + "") public Query setPerPage(Integer value) { return set(PER_PAGE, value); }
   @QueryParam(LATITUDE) public Query setLatitude(Double value) { return set(LATITUDE, value); }
   @QueryParam(LONGITUDE) public Query setLongitude(Double value) { return set(LONGITUDE, value); }
   
