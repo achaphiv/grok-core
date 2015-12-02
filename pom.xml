@@ -34,6 +34,7 @@
     <module>grok-core-bom</module>
     <module>grok-core-api</module>
     <module>grok-core-parent</module>
+    <module>grok-core-retrofit</module>
   </modules>
 
   <build>
