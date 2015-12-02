@@ -51,7 +51,7 @@ public final class Query extends ForwardingMap<String, Object> {
   }
 
   @SuppressWarnings("unchecked")
-  public <T> T get(String key) {
+  private <T> T get(String key) {
     return (T) delegate().get(key);
   }
 
