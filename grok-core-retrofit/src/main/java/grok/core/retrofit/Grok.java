@@ -12,7 +12,7 @@ import java.util.List;
 
 import grok.core.Crag;
 import grok.core.Id;
-import grok.core.Query;
+import grok.core.Filter;
 import grok.core.Route;
 import grok.core.RouteWithCrag;
 import retrofit.Call;
@@ -32,7 +32,7 @@ public interface Grok {
   Call<List<Crag>> crags();
 
   @GET(CRAGS_ENDPOINT)
-  Call<List<Crag>> crags(@QueryMap Query q);
+  Call<List<Crag>> crags(@QueryMap Filter filter);
 
   @GET
   Call<List<Crag>> moreCrags(@Url String paginationUrl);
@@ -52,7 +52,7 @@ public interface Grok {
   Call<List<Route>> cragRoutes(@Path("id") Id id);
 
   @GET(CRAGS_ID_ROUTES_ENDPOINT)
-  Call<List<Route>> cragRoutes(@Path("id") Id id, @QueryMap Query q);
+  Call<List<Route>> cragRoutes(@Path("id") Id id, @QueryMap Filter filter);
 
   @PUT(ROUTES_ID_ENDPOINT)
   Call<Route> route(@Path("id") Id id);
@@ -65,7 +65,7 @@ public interface Grok {
   Call<List<Route>> routes();
 
   @GET(ROUTES_ENDPOINT)
-  Call<List<Route>> routes(@QueryMap Query q);
+  Call<List<Route>> routes(@QueryMap Filter filter);
 
   @GET
   Call<List<Route>> moreRoutes(@Url String paginationUrl);
@@ -75,11 +75,11 @@ public interface Grok {
   Call<Route> insert(Route r);
 
   /**
-   * @deprecated Use {@link #cragRoutes(Query)} instead
+   * @deprecated Use {@link #cragRoutes(Filter)} instead
    */
   @Deprecated
   @GET(ROUTES_WITH_CRAGS_ENDPOINT)
-  Call<List<RouteWithCrag>> routeWithCrags(@QueryMap Query q);
+  Call<List<RouteWithCrag>> routeWithCrags(@QueryMap Filter filter);
 
   /**
    * @deprecated Use {@link #cragRoutes(Id)} instead
