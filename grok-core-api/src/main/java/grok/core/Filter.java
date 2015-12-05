@@ -61,9 +61,7 @@ public final class Filter extends ForwardingMap<String, Object> {
     return params;
   }
 
-  public Filter withPage(String value) {
-    Filter q = new Filter(params);
-    q.setPage(value);
-    return q;
+  public Filter copy() {
+    return new Filter(new HashMap<>(params));
   }
 }
