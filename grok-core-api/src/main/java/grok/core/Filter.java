@@ -1,6 +1,6 @@
 package grok.core;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.ws.rs.DefaultValue;
@@ -23,7 +23,7 @@ public final class Filter extends ForwardingMap<String, Object> {
   private final Map<String, Object> params;
 
   public Filter() {
-    this(new HashMap<String, Object>());
+    this(new LinkedHashMap<String, Object>());
   }
 
   public Filter(Map<String, Object> params) {
@@ -62,7 +62,7 @@ public final class Filter extends ForwardingMap<String, Object> {
   }
 
   public Filter copy() {
-    return new Filter(new HashMap<>(params));
+    return new Filter(new LinkedHashMap<>(params));
   }
   
   @Override
