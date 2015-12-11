@@ -64,4 +64,9 @@ public final class Filter extends ForwardingMap<String, Object> {
   public Filter copy() {
     return new Filter(new HashMap<>(params));
   }
+  
+  @Override
+  public String toString() {
+    return params.toString();
+  }
 }
