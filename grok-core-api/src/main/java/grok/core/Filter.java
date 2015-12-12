@@ -31,6 +31,9 @@ public final class Filter extends ForwardingMap<String, Object> {
   }
 
   // @formatter:off
+  public Filter copy() { return new Filter(new LinkedHashMap<>(params)); }
+  @Override public String toString() { return params.toString(); }
+
   @QueryParam(QUERY) public Filter setQuery(String value) { return set(QUERY, value); }
   @QueryParam(CRAG) public Filter setCrag(Id value) { return set(CRAG, value); }
   @QueryParam(PAGE) public Filter setPage(String value) { return set(PAGE, value); }
@@ -59,14 +62,5 @@ public final class Filter extends ForwardingMap<String, Object> {
   @Override
   protected Map<String, Object> delegate() {
     return params;
-  }
-
-  public Filter copy() {
-    return new Filter(new LinkedHashMap<>(params));
-  }
-  
-  @Override
-  public String toString() {
-    return params.toString();
   }
 }
