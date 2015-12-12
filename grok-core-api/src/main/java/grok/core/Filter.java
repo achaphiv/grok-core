@@ -18,8 +18,6 @@ public final class Filter extends ForwardingMap<String, Object> {
   public static final String LATITUDE = "lat";
   public static final String LONGITUDE = "lng";
 
-  public static final Filter EMPTY = new Filter();
-
   private final Map<String, Object> params;
 
   public Filter() {
