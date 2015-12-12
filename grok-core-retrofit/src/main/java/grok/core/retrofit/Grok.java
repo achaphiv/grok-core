@@ -75,7 +75,7 @@ public interface Grok {
   Call<Route> insert(Route r);
 
   /**
-   * @deprecated Use {@link #cragRoutes(Filter)} instead
+   * @deprecated Use {@link #cragRoutes(Id, Filter))} instead
    */
   @Deprecated
   @GET(ROUTES_WITH_CRAGS_ENDPOINT)
