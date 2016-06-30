@@ -198,13 +198,13 @@
     <profile>
       <id>build-release</id>
       <build>
-        <defaultGoal>clean verify promote:make-promotable</defaultGoal>
+        <defaultGoal>clean source:jar-no-fork verify promote:make-promotable</defaultGoal>
         <plugins>
-          <!-- Workaround to create ${project.build.directory} for promote plugin -->
           <plugin>
             <artifactId>maven-antrun-plugin</artifactId>
             <executions>
               <execution>
+                <id>create output dir for promote plugin</id>
                 <phase>validate</phase>
                 <goals>
                   <goal>run</goal>
@@ -214,18 +214,6 @@
                     <mkdir dir="${project.build.directory}" />
                   </target>
                 </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <!-- Attach sources -->
-          <plugin>
-            <artifactId>maven-source-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <goals>
-                  <goal>jar-no-fork</goal>
-                </goals>
               </execution>
             </executions>
           </plugin>
