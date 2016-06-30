@@ -182,7 +182,7 @@
       Given version: x.y.z-SNAPSHOT
       | Arguments                   | Output |
       | =========================== | ====== |
-      | -Drelease.version=A         | A      |
+      | -DnewVersion=A              | A      |
       | -Drelease.version.postfix=B | x.y.zB |
     -->
     <profile>
