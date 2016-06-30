@@ -179,50 +179,10 @@
       <id>prepare-release</id>
       <properties>
         <release.version.postfix>.${git.commitsCount}-${git.shortRevision}</release.version.postfix>
-        <release.version>${real.project.version}${release.version.postfix}</release.version>
+        <newVersion>${real.project.version}${release.version.postfix}</newVersion>
       </properties>
       <build>
-        <defaultGoal>validate</defaultGoal>
-        <plugins>
-          <plugin>
-            <groupId>ru.concerteza.buildnumber</groupId>
-            <artifactId>maven-jgit-buildnumber-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>git-buildnumber</id>
-                <phase>validate</phase>
-                <goals>
-                  <goal>extract-buildnumber</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>com.google.code.maven-replacer-plugin</groupId>
-            <artifactId>replacer</artifactId>
-            <executions>
-              <execution>
-                <id>set-release-build-number</id>
-                <phase>validate</phase>
-                <goals>
-                  <goal>replace</goal>
-                </goals>
-                <configuration>
-                  <basedir>${basedir}</basedir>
-                  <includes>
-                    <include>pom.xml</include>
-                  </includes>
-                  <replacements>
-                    <replacement>
-                      <token><![CDATA[(?<=>)${project.version}(?=<)]]></token>
-                      <value>${release.version}</value>
-                    </replacement>
-                  </replacements>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
+        <defaultGoal>jgit-buildnumber:extract-buildnumber versions:set</defaultGoal>
       </build>
     </profile>
     <profile>
