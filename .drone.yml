@@ -1,0 +1,8 @@
+build:
+  image: java:openjdk-7-alpine
+  commands:
+    - ./mvnw -s settings.xml -B -Pprepare-release
+    - ./mvnw -s settings.xml -B -Pbuild-release
+    - ./mvnw -s settings.xml -B -Ppublish-release
+
+
