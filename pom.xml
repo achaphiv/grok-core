@@ -37,6 +37,13 @@
     <module>grok-core-retrofit</module>
   </modules>
 
+  <scm>
+    <connection>scm:git:git@github.com:achaphiv/grok-core.git</connection>
+    <developerConnection>scm:git:git@github.com:achaphiv/grok-core.git</developerConnection>
+    <url>https://github.com/achaphiv/grok-core.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <build>
     <directory>${basedir}/${build.dir.name}</directory>
 
